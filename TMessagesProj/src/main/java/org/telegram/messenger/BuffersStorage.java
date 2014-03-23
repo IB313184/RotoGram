@@ -1,23 +1,36 @@
 /*
-* This is the source code of Telegram for Android v. 1.3.x.
-* It is licensed under GNU GPL v. 2 or later.
-* You should have received a copy of the license in this archive (see LICENSE).
-*
-* Copyright Nikolai Kudashov, 2013-2014.
-*/
+ * This is the source code of Telegram for Android v. 1.3.x.
+ * It is licensed under GNU GPL v. 2 or later.
+ * You should have received a copy of the license in this archive (see LICENSE).
+ *
+ * Copyright Nikolai Kudashov, 2013-2014.
+ */
 
 package org.telegram.messenger;
 
 import java.util.ArrayList;
 
 public class BuffersStorage {
-    public static BuffersStorage Instance = new BuffersStorage();
 
     private final ArrayList<ByteBufferDesc> freeBuffers128;
     private final ArrayList<ByteBufferDesc> freeBuffers1024;
     private final ArrayList<ByteBufferDesc> freeBuffers4096;
     private final ArrayList<ByteBufferDesc> freeBuffers16384;
     private final ArrayList<ByteBufferDesc> freeBuffers32768;
+
+    private static volatile BuffersStorage Instance = null;
+    public static BuffersStorage getInstance() {
+        BuffersStorage localInstance = Instance;
+        if (localInstance == null) {
+            synchronized (BuffersStorage.class) {
+                localInstance = Instance;
+                if (localInstance == null) {
+                    Instance = localInstance = new BuffersStorage();
+                }
+            }
+        }
+        return localInstance;
+    }
 
     public BuffersStorage() {
         freeBuffers128 = new ArrayList<ByteBufferDesc>();

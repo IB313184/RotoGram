@@ -10,8 +10,7 @@
         android:layout_weight="1"
         android:background="#ffffff">
 
-        <org.telegram.ui.Views.BackupImageView
-            android:layout_height="48dp"
+        <org.telegram.ui.Views.BackupImageView android:layout_height="48dp"
             android:layout_width="48dp"
             android:id="@+id/avatar_image"
             android:layout_gravity="right|top"/>
