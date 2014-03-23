@@ -11,6 +11,7 @@ This repo contains official [Telegram App for Android](https://play.google.com/s
 
 ### API, Protocol documentation
 
+
 Documentation for Telegram API is available here: http://core.telegram.org/api
 
 Documentation for MTproto protocol is available here: http://core.telegram.org/mtproto
